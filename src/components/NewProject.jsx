@@ -3,7 +3,7 @@ import Input from "./Input";
 
 export default function NewProject() {
   return (
-    <div className="w-[90%] md:w-1/2 mx-auto my-6">
+    <div className="w-[90%] md:w-1/2 mx-auto md:mx-0 my-6">
       <menu className="flex justify-end gap-2">
         <li>
           <Button>Cancel</Button>
