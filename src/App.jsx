@@ -65,6 +65,16 @@ function App() {
     });
   };
 
+  const handleEditProject = (projectData) => {
+    setProjectState((prevState) => {
+      return {
+        ...prevState,
+        selectedProjectId: projectData.id,
+      };
+    });
+    setSelectedProject(project);
+  };
+
   let content;
   if (projectState.selectedProjectId === undefined) {
     content = <NoProjectSelected handleStartProject={handleStartProject} />;
@@ -111,6 +121,7 @@ function App() {
               setSelectedProject={setSelectedProject}
               setProjectState={setProjectState}
               handleDeleteProject={handleDeleteProject}
+              projectState={projectState}
             />
           )}
         </div>

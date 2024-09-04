@@ -15,8 +15,8 @@ export default function NewProject({ handleAddProject, handleCancelProject }) {
     const enteredDueDate = dueDate.current.value;
 
     if (
-      enteredTitle.trim().length === 0 &&
-      enteredDescription.trim().length === 0 &&
+      enteredTitle.trim().length === 0 ||
+      enteredDescription.trim().length === 0 ||
       enteredDueDate.trim().length === 0
     ) {
       modalDialog.current.open();
