@@ -53,7 +53,17 @@ function App() {
     setSelectedProject(project);
   };
 
-  console.log(selectedProject);
+  const handleDeleteProject = (projectId) => {
+    setProjectState((prevState) => {
+      return {
+        ...prevState,
+        projects: prevState.projects.filter(
+          (project) => project.id !== projectId
+        ),
+        selectedProjectId: undefined,
+      };
+    });
+  };
 
   let content;
   if (projectState.selectedProjectId === undefined) {
@@ -78,6 +88,7 @@ function App() {
         handleStartProject={handleStartProject}
         projects={projectState.projects}
         handleSelectDetailProject={handleSelectDetailProject}
+        selectedProject={selectedProject}
       />
 
       {/* PROJECT MENU */}
@@ -99,6 +110,7 @@ function App() {
               selectedProject={selectedProject}
               setSelectedProject={setSelectedProject}
               setProjectState={setProjectState}
+              handleDeleteProject={handleDeleteProject}
             />
           )}
         </div>

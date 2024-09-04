@@ -5,6 +5,7 @@ export default function SideBar({
   handleStartProject,
   projects,
   handleSelectDetailProject,
+  selectedProject,
 }) {
   return (
     <aside
@@ -19,15 +20,18 @@ export default function SideBar({
       {/* PROJECT MENU */}
       {projects.length > 0 ? (
         <div className="mt-10">
-          {projects.map((project) => {
+          {projects.map((project, index) => {
             return (
               <p
                 key={project.id}
-                className="cursor-pointer text-2xl flex items-center gap-2"
+                className={`cursor-pointer text-2xl flex items-center gap-2 ${
+                  selectedProject && selectedProject.id === project.id
+                    ? "font-bold"
+                    : "font-extralight"
+                }`}
                 onClick={() => handleSelectDetailProject(project)}
               >
-                <FaRegDotCircle />
-                {project.title}
+                {index + 1}. {project.title}
               </p>
             );
           })}

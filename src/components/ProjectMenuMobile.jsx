@@ -29,7 +29,7 @@ export default function ProjectMenuMobile({
       <Button onClick={() => setOpenProject(false)}>Close</Button>
 
       {projectState.projects && projectState.projects.length > 0 ? (
-        <div className="flex flex-col justify-center items-center text-white p-4">
+        <div className="flex flex-col justify-center items-center text-white gap-y-2 p-4">
           {projectState.projects.map((project) => {
             return (
               <h1

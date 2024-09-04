@@ -1,12 +1,12 @@
 import { CiEdit } from "react-icons/ci";
 import Button from "./Button";
-import Input from "./Input";
 import { RiDeleteBack2Line } from "react-icons/ri";
 
 export default function DetailProject({
   selectedProject,
   setSelectedProject,
   setProjectState,
+  handleDeleteProject,
 }) {
   const handleClose = () => {
     setSelectedProject(null);
@@ -22,7 +22,9 @@ export default function DetailProject({
         <h1 className="text-3xl">{selectedProject.title}</h1>
         <div className="flex items-center gap-2">
           <Button>
-            <RiDeleteBack2Line />
+            <RiDeleteBack2Line
+              onClick={() => handleDeleteProject(selectedProject.id)}
+            />
           </Button>
           <Button>
             <CiEdit />
@@ -31,6 +33,7 @@ export default function DetailProject({
       </div>
       <p className="font-extralight">{selectedProject.dueDate}</p>
       <p>{selectedProject.description}</p>
+
       <hr className="my-4" />
       <Button onClick={handleClose}>Close</Button>
     </div>
