@@ -28,6 +28,10 @@ export default function NewProject({ handleAddProject, handleCancelProject }) {
       description: enteredDescription,
       dueDate: enteredDueDate,
     });
+
+    title.current.value = "";
+    description.current.value = "";
+    dueDate.current.value = "";
   };
 
   return (

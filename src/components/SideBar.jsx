@@ -1,7 +1,11 @@
 import { FaRegDotCircle } from "react-icons/fa";
 import Button from "./Button";
 
-export default function SideBar({ handleStartProject, projects }) {
+export default function SideBar({
+  handleStartProject,
+  projects,
+  handleSelectDetailProject,
+}) {
   return (
     <aside
       className={`hidden md:block bg-stone-800 px-12 py-10 min-h-screen w-full text-white max-w-xs`}
@@ -12,16 +16,25 @@ export default function SideBar({ handleStartProject, projects }) {
         + Add Project
       </Button>
 
-      <div className="mt-10">
-        {projects.map((project) => {
-          return (
-            <p key={project.id} className="text-2xl flex items-center gap-2">
-              <FaRegDotCircle />
-              {project.title}
-            </p>
-          );
-        })}
-      </div>
+      {/* PROJECT MENU */}
+      {projects.length > 0 ? (
+        <div className="mt-10">
+          {projects.map((project) => {
+            return (
+              <p
+                key={project.id}
+                className="cursor-pointer text-2xl flex items-center gap-2"
+                onClick={() => handleSelectDetailProject(project)}
+              >
+                <FaRegDotCircle />
+                {project.title}
+              </p>
+            );
+          })}
+        </div>
+      ) : (
+        <p className="text-2xl mt-10">No Available Project</p>
+      )}
     </aside>
   );
 }

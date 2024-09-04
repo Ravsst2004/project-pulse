@@ -27,7 +27,7 @@ const Modal = forwardRef(function Modal({ children }, ref) {
   return createPortal(
     <dialog
       ref={modalDialog}
-      className="absolute top-[5%] md:top-1/2 border-2 p-2 rounded-md"
+      className="absolute top-[5%] md:top-0 border-2 p-2 rounded-md"
     >
       {children}
       <form method="dialog">
