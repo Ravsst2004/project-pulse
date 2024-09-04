@@ -77,26 +77,29 @@ export default function DetailProject({
         </p>
       </Modal>
 
-      <div className="flex justify-between items-center">
+      <div className="flex items-center justify-between">
         {openEdit ? (
           <Input
             type="text"
             label="title"
             defaultValue={selectedProject.title}
             ref={title}
+            className="w-full"
           />
         ) : (
           <h1 className="text-3xl">{selectedProject.title}</h1>
         )}
 
-        <div className="flex items-center gap-2">
-          <Button onClick={() => handleDeleteProject(selectedProject.id)}>
-            <RiDeleteBack2Line />
-          </Button>
-          <Button onClick={handleOpenEdit}>
-            <CiEdit />
-          </Button>
-        </div>
+        {openEdit ? null : (
+          <div className="flex items-center gap-2">
+            <Button onClick={() => handleDeleteProject(selectedProject.id)}>
+              <RiDeleteBack2Line />
+            </Button>
+            <Button onClick={handleOpenEdit}>
+              <CiEdit />
+            </Button>
+          </div>
+        )}
       </div>
 
       {openEdit ? (
@@ -123,7 +126,21 @@ export default function DetailProject({
       )}
 
       <hr className="my-4" />
-      {openEdit && <Button onClick={handleSaveEdit}>Save</Button>}
+      {openEdit && (
+        <div className="flex items-center gap-2">
+          <Button onClick={() => handleDeleteProject(selectedProject.id)}>
+            <RiDeleteBack2Line />
+          </Button>
+          <Button onClick={handleOpenEdit}>
+            <CiEdit />
+          </Button>
+        </div>
+      )}
+      {openEdit && (
+        <Button onClick={handleSaveEdit} className="mt-2">
+          Save
+        </Button>
+      )}
       <Button onClick={handleClose} className="mt-2">
         Close
       </Button>
